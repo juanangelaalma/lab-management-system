@@ -23,6 +23,28 @@ class Sidebar extends Component
      */
     public function render()
     {
-        return view('components.sidebar');
+        $links = [
+            "Dashboard" => [
+                "icon"      => "bx bx-home-circle",
+                "url"       => "/dashboard",
+                "sublinks"  => false
+            ],
+            "Inventaris Lab" => [
+                "icon" => "bx bx-layout",
+                "url"  => false,
+                "sublinks"  => [
+                    "Table" => [
+                        "icon"  => "bx bx-table",
+                        "url"   => "/inventories/table"
+                    ],
+                    "Tambah Inventaris" => [
+                        "icon"  => "bx bx-plus",
+                        "url"   => "/inventories/create"
+                    ]
+                ]
+            ]
+        ];
+
+        return view('components.sidebar', ['links' => $links]);
     }
 }
