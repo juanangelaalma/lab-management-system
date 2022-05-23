@@ -13,10 +13,21 @@ class CreateInventoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('inventories', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        
+        if(!Schema::hasTable('inventories')){
+            Schema::create('inventories', function (Blueprint $table) {
+                $table->id();
+                $table->string('item_code', 25)->unique();
+                $table->unsignedBigInteger('category_id');
+                $table->string('name', 25);
+                $table->enum('status', ['used', 'unused'])->default('unused');
+                $table->enum('condition', ['good', 'bad'])->default('good');
+                $table->text('description')->nullable();
+                $table->timestamps();
+    
+                $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            });
+        }
     }
 
     /**

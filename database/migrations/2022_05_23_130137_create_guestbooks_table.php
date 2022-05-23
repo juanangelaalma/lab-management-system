@@ -15,7 +15,12 @@ class CreateGuestbooksTable extends Migration
     {
         Schema::create('guestbooks', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('guest_id');
+            $table->text('purpose');
+            $table->text('description')->nullable();
             $table->timestamps();
+
+            $table->foreign('guest_id')->references('id')->on('guests')->onDelete('cascade');
         });
     }
 
