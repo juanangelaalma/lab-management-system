@@ -81,6 +81,15 @@
                         <a class="dropdown-item" href="auth-login-basic.html">
                             <i class="bx bx-power-off me-2"></i>
                             <span class="align-middle">Log Out</span>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+    
+                                <div :href="route('logout')"
+                                        onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                                    {{ __('Log Out') }}
+                                </div>
+                            </form>
                         </a>
                     </li>
                 </ul>

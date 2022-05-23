@@ -13,18 +13,19 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('test', function() {
-    return view('test');
-});
+Route::get('/dashboard', function() {
+    return 'dashbord guest';
+})->middleware(['auth', 'nonstaff'])->name('dashboard'); // nonstaff means guest because the middleware have double guest name
 
-Route::get('dashboard', function() {
-    return view('dashboard');
-});
-Auth::routes();
+Route::get('/staff/dashboard', function() {
+    return 'dashboad staff';
+})->middleware(['auth', 'staff'])->name('staff.dashboard');
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
