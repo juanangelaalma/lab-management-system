@@ -141,8 +141,17 @@
               <form method="POST" class="mb-3" action="{{ route('register') }}">
                 @csrf
                 <div class="mb-3">
+                  <label for="username" class="form-label">Nomor Induk</label>
+                  <input id="reg_number" type="text" placeholder="XXX-XXX-XXX" class="form-control @error('reg_number') is-invalid @enderror" name="reg_number" value="{{ old('reg_number') }}" required autocomplete="reg_number" autofocus>
+                  @error('reg_number')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+                </div>
+                <div class="mb-3">
                   <label for="username" class="form-label">Nama Lengkap</label>
-                  <input id="name" type="text" placeholder="Juan Angela Alma" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                  <input id="name" type="text" placeholder="Juan Angela Alma" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name">
                   @error('name')
                   <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -167,9 +176,16 @@
                       <strong>{{ $message }}</strong>
                     </span>
                     @enderror
-                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                   </div>
                 </div>
+                {{-- <div class="mb-3 fomr-password-toggle">
+                  <label class="form-label" for="password">Confirm Password</label>
+                  
+                  <div class="input-group input-group-merge">
+                    <input placeholder="*********" id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                    </div>
+                </div> --}}
                 <button class="btn btn-primary d-grid w-100">Daftar</button>
               </form>
 
