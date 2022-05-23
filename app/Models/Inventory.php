@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Inventory extends Model
 {
     use HasFactory;
+
+    public function loans() {
+        return $this->hasMany(Loan::class);
+    }
 }

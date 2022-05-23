@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Guestbook extends Model
 {
     use HasFactory;
+
+    public function guest() {
+        return $this->belongsTo(Guest::class);
+    }
 }
