@@ -1,31 +1,30 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GuestbookController;
+use App\Http\Controllers\GuestController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 Auth::routes();
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function() {
-    return 'dashbord guest';
-})->middleware(['auth', 'nonstaff'])->name('dashboard'); // nonstaff means guest because the middleware have double guest name
 
-Route::get('/staff/dashboard', function() {
-    return 'dashboad staff';
-})->middleware(['auth', 'staff'])->name('staff.dashboard');
+Route::middleware(['auth', 'nonstaff'])->group(function() {
+    Route::get('dashboard', [DashboardController::class, 'guest'])->name('dashboard');  // nonstaff means guest because the middleware have double guest name
 
+    Route::prefix('guestbook')->group(function() {
+        Route::get('/create', [GuestbookController::class, 'create'])->name('guestbook.create');
+        Route::post('/create', [GuestbookController::class, 'store']);
+        Route::get('history', [GuestController::class, 'history'])->name('guestbook.history');
+    });
+});
+
+Route::middleware(['auth', 'staff'])->group(function() {
+    Route::get('/staff/dashboard', [DashboardController::class, 'staff'])->name('staff.dashboard');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

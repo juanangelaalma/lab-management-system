@@ -9,6 +9,8 @@ class Guestbook extends Model
 {
     use HasFactory;
 
+    protected $fillable = ["guest_id", "purpose", "start", "end", "description"];
+
     public function guest() {
         return $this->belongsTo(Guest::class);
     }

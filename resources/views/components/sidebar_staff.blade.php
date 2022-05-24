@@ -64,53 +64,17 @@
         </li>
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-book-content"></i>
-                <div data-i18n="Layouts">Buku Tamu</div>
-            </a>
-            
-            <ul class="menu-sub">
-                <li class="menu-item active">
-                    <a href="/layouts" class="menu-link">
-                        <div data-i18n="Without menu">Isi Buku Tamu</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="/layouts" class="menu-link">
-                        <div data-i18n="Without menu">Riwayat Kunjungan</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-book-content"></i>
-                <div data-i18n="Layouts">Inventory</div>
+                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <div data-i18n="Layouts">Layout</div>
             </a>
 
             <ul class="menu-sub">
                 <li class="menu-item">
                     <a href="/layouts" class="menu-link">
-                        <div data-i18n="Without menu">Peminjaman</div>
-                    </a>
-                </li>
-                <li class="menu-item active">
-                    <a href="/layouts" class="menu-link">
-                        <div data-i18n="Without menu">List Inventory</div>
+                        <div data-i18n="Without menu">Sub layout</div>
                     </a>
                 </li>
             </ul>
-        </li>
-        <li class="menu-item">
-            <a href="/staff/dashboard" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Informasi Lab</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="/staff/dashboard" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-message-dots"></i>
-                <div data-i18n="Analytics">Saran dan Masukkan</div>
-            </a>
         </li>
         <!-- Dashboard -->
 

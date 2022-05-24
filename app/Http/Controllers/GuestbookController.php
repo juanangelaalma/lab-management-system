@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Guestbook;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GuestbookController extends Controller
 {
@@ -24,7 +25,7 @@ class GuestbookController extends Controller
      */
     public function create()
     {
-        //
+        return view('guestbook.create');
     }
 
     /**
@@ -35,7 +36,21 @@ class GuestbookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'purpose'   => 'required|min:8',
+            'start'     => 'required',
+            'end'       => 'required',
+        ]);
+        
+        Guestbook::create([
+            'guest_id'    => Auth::user()->guest->id,
+            'purpose'     => $request->purpose,
+            'start'       => $request->start,
+            'end'         => $request->end,
+            'description' => $request->description,
+        ]);
+        
+        return back()->with('success', 'Terima kasih telah mengisi buku tamu');
     }
 
     /**
@@ -81,5 +96,9 @@ class GuestbookController extends Controller
     public function destroy(Guestbook $guestbook)
     {
         //
+    }
+
+    public function history() {
+
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
 class Sidebar extends Component
@@ -23,28 +24,12 @@ class Sidebar extends Component
      */
     public function render()
     {
-        $links = [
-            "Dashboard" => [
-                "icon"      => "bx bx-home-circle",
-                "url"       => "/dashboard",
-                "sublinks"  => false
-            ],
-            "Inventaris Lab" => [
-                "icon" => "bx bx-layout",
-                "url"  => false,
-                "sublinks"  => [
-                    "Table" => [
-                        "icon"  => "bx bx-table",
-                        "url"   => "/inventories/table"
-                    ],
-                    "Tambah Inventaris" => [
-                        "icon"  => "bx bx-plus",
-                        "url"   => "/inventories/create"
-                    ]
-                ]
-            ]
-        ];
+        $user = Auth::user();
 
-        return view('components.sidebar', ['links' => $links]);
+        if($user->role == 'staff') {
+            return view('components.sidebar_staff');
+        }
+
+        return view('components.sidebar');
     }
 }
