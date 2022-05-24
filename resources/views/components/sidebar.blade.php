@@ -88,14 +88,14 @@
             </a>
 
             <ul class="menu-sub">
+                <li class="menu-item{{ $active == "inventories_list" ? " active" : '' }}">
+                    <a href="{{ route('inventories.list') }}" class="menu-link">
+                        <div data-i18n="Without menu">List Inventory</div>
+                    </a>
+                </li>
                 <li class="menu-item{{ $active == "loans" ? " active" : '' }}">
                     <a href="/layouts" class="menu-link">
                         <div data-i18n="Without menu">Peminjaman</div>
-                    </a>
-                </li>
-                <li class="menu-item{{ $active == "inventories_list" ? " active" : '' }}">
-                    <a href="/layouts" class="menu-link">
-                        <div data-i18n="Without menu">List Inventory</div>
                     </a>
                 </li>
             </ul>

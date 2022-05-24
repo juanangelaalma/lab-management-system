@@ -3,6 +3,8 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuestbookController;
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\LoanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +22,11 @@ Route::middleware(['auth', 'nonstaff'])->group(function() {
         Route::get('/create', [GuestbookController::class, 'create'])->name('guestbook.create');
         Route::post('/create', [GuestbookController::class, 'store']);
         Route::get('history', [GuestbookController::class, 'history'])->name('guestbook.history');
+    });
+
+    Route::prefix('inventories')->group(function() {
+        Route::get('/list', [InventoryController::class, 'index'])->name('inventories.list');
+        Route::get('/loans', [LoanController::class, 'loans'])->name('loans');
     });
 });
 
