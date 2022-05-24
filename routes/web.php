@@ -19,7 +19,7 @@ Route::middleware(['auth', 'nonstaff'])->group(function() {
     Route::prefix('guestbook')->group(function() {
         Route::get('/create', [GuestbookController::class, 'create'])->name('guestbook.create');
         Route::post('/create', [GuestbookController::class, 'store']);
-        Route::get('history', [GuestController::class, 'history'])->name('guestbook.history');
+        Route::get('history', [GuestbookController::class, 'history'])->name('guestbook.history');
     });
 });
 

@@ -70,12 +70,12 @@
             
             <ul class="menu-sub">
                 <li class="menu-item{{ $active == "guestbook" ? " active" : '' }}">
-                    <a href="/layouts" class="menu-link">
+                    <a href="{{ route('guestbook.create') }}" class="menu-link">
                         <div data-i18n="Without menu">Isi Buku Tamu</div>
                     </a>
                 </li>
                 <li class="menu-item{{ $active == "guestbook_hist" ? " active" : '' }}">
-                    <a href="/layouts" class="menu-link">
+                    <a href="{{ route('guestbook.history') }}" class="menu-link">
                         <div data-i18n="Without menu">Riwayat Kunjungan</div>
                     </a>
                 </li>

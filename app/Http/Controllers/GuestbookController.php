@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Guest;
 use App\Models\Guestbook;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -99,6 +100,11 @@ class GuestbookController extends Controller
     }
 
     public function history() {
-
+        $id = Auth::user()->guest->id;
+        $guestbook = Guest::find($id)->guestbook;
+        
+        return view('guestbook.history', [
+            'guestbook' => $guestbook
+        ]);
     }
 }

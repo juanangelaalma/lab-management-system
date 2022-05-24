@@ -26,7 +26,7 @@ class Guest extends Model
     }
 
     public function guestbook() {
-        return $this->hasMany(Guestbook::class);
+        return $this->hasMany(Guestbook::class)->latest();
     }
 
     public function feedbacks() {
