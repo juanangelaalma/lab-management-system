@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -20,10 +21,17 @@ class UserSeeder extends Seeder
             'password'  => Hash::make('staff'),
             'role'      => 'staff'
         ]);
-        DB::table('users')->insert([
+
+        $guest = User::create([
             'email'     => 'guest@gmail.com',
             'password'  => Hash::make('guest'),
             'role'      => 'guest'
+        ]);
+
+        DB::table('guests')->insert([
+            'name'      => 'Joko Susilo',
+            'reg_number'=> '20051204058',
+            'user_id'   => $guest->id
         ]);
     }
 }
