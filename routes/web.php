@@ -25,8 +25,11 @@ Route::middleware(['auth', 'nonstaff'])->group(function() {
     });
 
     Route::prefix('inventories')->group(function() {
-        Route::get('/list', [InventoryController::class, 'index'])->name('inventories.list');
-        Route::get('/loans', [LoanController::class, 'loans'])->name('loans');
+        Route::get('/list', [InventoryController::class, 'list'])->name('inventories.list');
+    });
+    
+    Route::prefix('loans')->group(function() {
+        Route::get('/history', [LoanController::class, 'history'])->name('loans.history');
     });
 });
 

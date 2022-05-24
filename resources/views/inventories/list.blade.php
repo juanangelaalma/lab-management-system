@@ -32,7 +32,7 @@
                         <td><span class="badge me-1 {{ $inventory->condition === 'bad' ? 'bg-label-danger' : 'bg-label-primary' }}">{{ $inventory->condition == 'bad' ? '😥 ' : '😁 ' . $inventory->condition }}</span></td>
                         <td>{{ $inventory->description }}</td>
                         <td>
-                          <a href="" class="btn btn-sm btn-primary">Ajukan Peminjaman</a>
+                          <a href="" class="btn btn-sm btn-primary btn-disabled pointer-event-none">Ajukan Peminjaman</a>
                         </td>
                       </tr>
                       @endforeach

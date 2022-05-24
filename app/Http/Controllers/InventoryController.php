@@ -14,9 +14,9 @@ class InventoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function list()
     {
-        return view('inventories.table', [
+        return view('inventories.list', [
             'inventories' => Inventory::all()
         ]);
     }

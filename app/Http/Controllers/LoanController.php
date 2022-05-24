@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Loan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoanController extends Controller
 {
@@ -12,9 +13,11 @@ class LoanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function history()
     {
-        //
+        return view('loans.history', [
+            'loans' => Auth::user()->guest->loans
+        ]);
     }
 
     /**

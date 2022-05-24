@@ -94,7 +94,7 @@
                     </a>
                 </li>
                 <li class="menu-item{{ $active == "loans" ? " active" : '' }}">
-                    <a href="/layouts" class="menu-link">
+                    <a href="{{ route("loans.history") }}" class="menu-link">
                         <div data-i18n="Without menu">Peminjaman</div>
                     </a>
                 </li>
