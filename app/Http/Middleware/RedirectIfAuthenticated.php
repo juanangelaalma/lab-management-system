@@ -29,10 +29,10 @@ class RedirectIfAuthenticated
         if (Auth::check()) {
             $user = Auth::user();
             if ($user->role == 'staff') {
-                return redirect('staff.dashboard');
+                return redirect(route('staff.dashboard'));
             }
             if ($user->role == 'guest') {
-                return redirect('dashboard');
+                return redirect(route('dashboard'));
             }
             return redirect(RouteServiceProvider::HOME);
         }
