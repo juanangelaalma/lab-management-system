@@ -17,6 +17,7 @@ class CreateGuestsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('reg_number')->nullable();
+            $table->text('profil_picture')->nullable();
             $table->string('name', 25)->nullable();
             $table->string('birth_place', 25)->nullable();
             $table->date('birth_date')->nullable();
