@@ -7,6 +7,8 @@ use App\Http\Requests\StoreInventoryRequest;
 use App\Http\Requests\UpdateInventoryRequest;
 use GuzzleHttp\Psr7\Request;
 
+use function GuzzleHttp\Promise\all;
+
 class InventoryController extends Controller
 {
     /**
@@ -16,9 +18,8 @@ class InventoryController extends Controller
      */
     public function list()
     {
-        return view('inventories.list', [
-            'inventories' => Inventory::all()
-        ]);
+        $inventories = Inventory::all();
+        return view('inventories.list', ['inventories' => $inventories]);
     }
 
     /**

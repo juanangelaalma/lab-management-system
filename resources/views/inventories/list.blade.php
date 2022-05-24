@@ -8,38 +8,45 @@
         <div class="row">
             <!-- Basic Layout -->
             <div class="col-xxl">
-              <div class="card">
-                <div class="table-responsive text-nowrap py-2">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>Kode Barang</th>
-                        <th>Nama</th>
-                        <th>Kategori</th>
-                        <th>Status</th>
-                        <th>Kondisi</th>
-                        <th>Deskripsi</th>
-                        <th>Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody class="table-border-bottom-0">
-                      @foreach ($inventories as $inventory)
-                      <tr>
-                        <td>{{ $inventory->item_code }}</td>
-                        <td>{{ $inventory->name }}</td>
-                        <td>{{ $inventory->category->name }}</td>
-                        <td><span class="badge me-1 {{ $inventory->status === 'used' ? 'bg-label-danger' : 'bg-label-primary' }}">{{ $inventory->status }}</span></td>
-                        <td><span class="badge me-1 {{ $inventory->condition === 'bad' ? 'bg-label-danger' : 'bg-label-primary' }}">{{ $inventory->condition == 'bad' ? '😥 ' : '😁 ' . $inventory->condition }}</span></td>
-                        <td>{{ $inventory->description }}</td>
-                        <td>
-                          <a href="" class="btn btn-sm btn-primary btn-disabled pointer-event-none">Ajukan Peminjaman</a>
-                        </td>
-                      </tr>
-                      @endforeach
-                    </tbody>
-                  </table>
+                <div class="card">
+                    <div class="table-responsive text-nowrap py-2">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Kode Barang</th>
+                                    <th>Nama</th>
+                                    <th>Kategori</th>
+                                    <th>Deskripsi</th>
+                                    <th>Kondisi</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+                                @foreach ($inventories as $inventory)
+                                    <tr>
+                                        <td>{{ $inventory->item_code }}</td>
+                                        <td>{{ $inventory->name }}</td>
+                                        <td>{{ $inventory->category->name }}</td>
+                                        <td>{{ $inventory->description }}</td>
+                                        <td><span
+                                                class="badge me-1{{ $inventory->condition === 'bad' ? ' bg-label-danger' : ' bg-label-primary' }}">{{ ($inventory->condition == 'bad' ? '😥 ' : '🙂 ') . $inventory->condition }}</span>
+                                        </td>
+                                        <td>
+                                            <span
+                                                class="badge me-1{{ count($inventory->loans->where('status', 'not returned')) ? ' bg-label-danger' : ' bg-label-primary' }}">{{ count($inventory->loans->where('status', 'not returned')) ? 'not available' : 'available' }}</span>
+                                        </td>
+                                        <td>
+                                            <a href=""
+                                                class="btn btn-sm btn-primary{{ count($inventory->loans->where('status', 'not returned')) ? ' disabled' : '' }}">Ajukan
+                                                Peminjaman</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-              </div>
             </div>
         </div>
     </div>
