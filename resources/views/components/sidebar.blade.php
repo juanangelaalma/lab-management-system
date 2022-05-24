@@ -56,57 +56,57 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1">
-        <li class="menu-item active">
+        <li class="menu-item{{ $active == "dashboard" ? " active" : '' }}">
             <a href="/staff/dashboard" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
         </li>
-        <li class="menu-item">
+        <li class="menu-item{{ $active == "guestbook" || $active == "guestbook_hist" ? " active" : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-book-content"></i>
                 <div data-i18n="Layouts">Buku Tamu</div>
             </a>
             
             <ul class="menu-sub">
-                <li class="menu-item active">
+                <li class="menu-item{{ $active == "guestbook" ? " active" : '' }}">
                     <a href="/layouts" class="menu-link">
                         <div data-i18n="Without menu">Isi Buku Tamu</div>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item{{ $active == "guestbook_hist" ? " active" : '' }}">
                     <a href="/layouts" class="menu-link">
                         <div data-i18n="Without menu">Riwayat Kunjungan</div>
                     </a>
                 </li>
             </ul>
         </li>
-        <li class="menu-item">
+        <li class="menu-item{{ $active == "loans" || $active == "inventories_list" ? " active" : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-book-content"></i>
                 <div data-i18n="Layouts">Inventory</div>
             </a>
 
             <ul class="menu-sub">
-                <li class="menu-item">
+                <li class="menu-item{{ $active == "loans" ? " active" : '' }}">
                     <a href="/layouts" class="menu-link">
                         <div data-i18n="Without menu">Peminjaman</div>
                     </a>
                 </li>
-                <li class="menu-item active">
+                <li class="menu-item{{ $active == "inventories_list" ? " active" : '' }}">
                     <a href="/layouts" class="menu-link">
                         <div data-i18n="Without menu">List Inventory</div>
                     </a>
                 </li>
             </ul>
         </li>
-        <li class="menu-item">
+        <li class="menu-item{{ $active == "lab_info" ? " active" : '' }}">
             <a href="/staff/dashboard" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Informasi Lab</div>
             </a>
         </li>
-        <li class="menu-item">
+        <li class="menu-item{{ $active == "feedback" ? " active" : '' }}">
             <a href="/staff/dashboard" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-message-dots"></i>
                 <div data-i18n="Analytics">Saran dan Masukkan</div>

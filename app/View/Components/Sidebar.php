@@ -12,9 +12,10 @@ class Sidebar extends Component
      *
      * @return void
      */
-    public function __construct()
+    public $active = "";
+    public function __construct($active = "dashboard")
     {
-        //
+        $this->active = $active;
     }
 
     /**

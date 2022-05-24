@@ -47,14 +47,13 @@
     <div class="layout-wrapper layout-content-navbar vh-100">
         <div class="layout-container">
             <!-- Menu -->
-            <x-sidebar></x-sidebar>
+            <x-sidebar active="{{ $active }}"></x-sidebar>
             <!-- / Menu -->
 
             <!-- Layout container -->
             <div class="layout-page overflow-auto">
                 <!-- Navbar -->
                 <x-navbar></x-navbar>
-
                 <!-- / Navbar -->
 
                 <!-- Content wrapper -->
