@@ -6,6 +6,7 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\GuestbookController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\LoanController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +44,11 @@ Route::middleware(['auth', 'nonstaff'])->group(function() {
     Route::prefix('feedback')->group(function() {
         Route::get('create', [FeedbackController::class, 'create'])->name('feedback.create');
         Route::post('create', [FeedbackController::class, 'store']);
+    });
+
+    Route::prefix('profile')->group(function() {
+        Route::get('/', [ProfileController::class, 'index'])->name('profile');
+        Route::put('/', [ProfileController::class, 'update'])->name('profile.update');
     });
 });
 
