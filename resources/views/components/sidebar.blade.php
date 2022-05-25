@@ -101,13 +101,13 @@
             </ul>
         </li>
         <li class="menu-item{{ $active == "lab_info" ? " active" : '' }}">
-            <a href="/staff/dashboard" class="menu-link">
+            <a href="{{ route('lab.info') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Informasi Lab</div>
             </a>
         </li>
         <li class="menu-item{{ $active == "feedback" ? " active" : '' }}">
-            <a href="/staff/dashboard" class="menu-link">
+            <a href="{{ route('feedback.create') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-message-dots"></i>
                 <div data-i18n="Analytics">Saran dan Masukkan</div>
             </a>

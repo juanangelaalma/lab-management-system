@@ -9,6 +9,8 @@ class Feedback extends Model
 {
     use HasFactory;
 
+    protected $fillable = ["complaint", "suggestion", "guest_id"];
+
     public function user() {
         return $this->belongsTo(User::class);
     }
