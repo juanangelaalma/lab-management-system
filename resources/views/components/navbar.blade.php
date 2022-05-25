@@ -21,7 +21,9 @@
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                        <img src="/assets/img/avatars/{{ $profile->profile_picture ? $profile->profile_picture : 'profile.png' }}" alt class="w-px-40 h-auto rounded-circle" />
+                        <img style="object-fit: cover; object-position:center;"
+                            src="{{ $profile->profile_picture ? '/storage/assets/img/avatars/' . $profile->profile_picture : '/assets/img/avatars/profile.png' }}"
+                            alt class="w-px-40 h-100 rounded-circle" />
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
@@ -30,8 +32,9 @@
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
-                                        <img src="/assets/img/avatars/{{ $profile->profile_picture ? $profile->profile_picture : 'profile.png' }}" alt
-                                            class="w-px-40 h-auto rounded-circle" />
+                                        <img style="object-fit: cover; object-position:center;"
+                                            src="{{ $profile->profile_picture ? '/storage/assets/img/avatars/' . $profile->profile_picture : '/assets/img/avatars/profile.png' }}"
+                                            alt class="w-px-40 h-100 rounded-circle" />
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
@@ -45,29 +48,28 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{ route('profile') }}">
                             <i class="bx bx-user me-2"></i>
                             <span class="align-middle">My Profile</span>
                         </a>
                     </li>
-                        <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="auth-login-basic.html">
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <i class="bx bx-power-off me-2"></i>
-                                <spann class="align-middle" :href="route('logout')"
-                                        onclick="event.preventDefault();
-                                                    this.closest('form').submit();">
-                                    {{ __('Log Out') }}
-                                </spann>
-                            </form>
-                        </a>
-                    </li>
-                </ul>
+                    <div class="dropdown-divider"></div>
             </li>
-            <!--/ User -->
+            <li>
+                <form class="cursor-pointer" method="POST" action="{{ route('logout') }}">
+                    <a class="dropdown-item" :href="route('logout')" onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        @csrf
+                        <i class="bx bx-power-off me-2"></i>
+                        <span class="align-middle">
+                            {{ __('Log Out') }}
+                        </span>
+                    </a>
+                </form>
+            </li>
+        </ul>
+        </li>
+        <!--/ User -->
         </ul>
     </div>
 </nav>

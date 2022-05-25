@@ -14,7 +14,9 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        return view('lab.info', [
+            'events' => Event::latest()->get(),
+        ]);
     }
 
     /**
@@ -46,7 +48,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        //
+        dd($event->id);
     }
 
     /**

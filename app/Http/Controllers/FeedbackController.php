@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Feedback;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FeedbackController extends Controller
 {
@@ -24,7 +25,7 @@ class FeedbackController extends Controller
      */
     public function create()
     {
-        //
+        return view('feedback.create');
     }
 
     /**
@@ -35,7 +36,18 @@ class FeedbackController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'complaint'     => 'required',
+            'suggestion'    => 'required',
+        ]);
+
+        Feedback::create([
+            'guest_id'   => Auth::user()->guest->id,
+            'complaint'  => $request->complaint,
+            'suggestion' => $request->suggestion,
+        ]);
+
+        return back()->with('success', 'Terima kasih saran dan masukkannya');
     }
 
     /**
