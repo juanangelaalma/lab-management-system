@@ -1,4 +1,4 @@
-@extends('layouts.app', ['active' => 'inventories_list'])
+@extends('layouts.app', ['active' => 'loans'])
 
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
@@ -9,6 +9,7 @@
             <!-- Basic Layout -->
             <div class="col-xxl">
               <div class="card">
+                <x-alert></x-alert>
                 <div class="table-responsive text-nowrap py-2">
                   <table class="table">
                     <thead>

@@ -37,7 +37,7 @@
                                                 class="badge me-1{{ count($inventory->loans->where('status', 'not returned')) ? ' bg-label-danger' : ' bg-label-primary' }}">{{ count($inventory->loans->where('status', 'not returned')) ? 'not available' : 'available' }}</span>
                                         </td>
                                         <td>
-                                            <a href=""
+                                            <a href="{{ route('loans.create', $inventory) }}"
                                                 class="btn btn-sm btn-primary{{ count($inventory->loans->where('status', 'not returned')) ? ' disabled' : '' }}">Ajukan
                                                 Peminjaman</a>
                                         </td>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Inventory;
 use App\Models\Loan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,7 @@ class LoanController extends Controller
     public function history()
     {
         return view('loans.history', [
-            'loans' => Auth::user()->guest->loans
+            'loans' => Auth::user()->guest->loans->sortBy('created_at')
         ]);
     }
 
@@ -25,9 +26,11 @@ class LoanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Inventory $inventory)
     {
-        //
+        return view('loans.create', [
+            'inventory' => $inventory->first(),
+        ]);
     }
 
     /**
@@ -38,7 +41,26 @@ class LoanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'inventory_id'  => 'required',
+            'item_code'     => 'required',
+            'name'          => 'required',
+            'start'         => 'required',
+            'end'           => 'required',
+        ]);
+
+        if(count(Inventory::find($request->inventory_id)->loans->where('status', 'not returned'))) {
+            return back()->with('fail', 'Maaf barang tidak tersedia');
+        }
+
+        Loan::create([
+            'guest_id'      => Auth::user()->guest->id,
+            'inventory_id'  => $request->inventory_id,
+            'start'         => $request->start,
+            'end'           => $request->end,
+        ]);
+
+        return redirect('/loans/history')->with('success', 'Sukses mengajukan peminjaman');
     }
 
     /**

@@ -29,6 +29,8 @@ Route::middleware(['auth', 'nonstaff'])->group(function() {
     });
     
     Route::prefix('loans')->group(function() {
+        Route::get('/create/{iventory:id}', [LoanController::class, 'create'])->name('loans.create');
+        Route::post('/store', [LoanController::class, 'store'])->name('loans.store');
         Route::get('/history', [LoanController::class, 'history'])->name('loans.history');
     });
 });
