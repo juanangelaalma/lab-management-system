@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Inventory;
 use App\Http\Requests\StoreInventoryRequest;
 use App\Http\Requests\UpdateInventoryRequest;
+use GuzzleHttp\Psr7\Request;
+
+use function GuzzleHttp\Promise\all;
 
 class InventoryController extends Controller
 {
@@ -13,9 +16,10 @@ class InventoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function list()
     {
-        //
+        $inventories = Inventory::all();
+        return view('inventories.list', ['inventories' => $inventories]);
     }
 
     /**
@@ -34,7 +38,7 @@ class InventoryController extends Controller
      * @param  \App\Http\Requests\StoreInventoryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreInventoryRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -68,7 +72,7 @@ class InventoryController extends Controller
      * @param  \App\Models\Inventory  $inventory
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateInventoryRequest $request, Inventory $inventory)
+    public function update(Inventory $inventory)
     {
         //
     }

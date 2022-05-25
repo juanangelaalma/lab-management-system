@@ -9,6 +9,8 @@ class Loan extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['guest_id', 'inventory_id', 'start', 'end'];
+
     public function inventory() {
         return $this->belongsTo(Inventory::class);
     }

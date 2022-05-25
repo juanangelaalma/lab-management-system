@@ -12,4 +12,8 @@ class Inventory extends Model
     public function loans() {
         return $this->hasMany(Loan::class);
     }
+
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
 }

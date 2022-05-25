@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
 class Navbar extends Component
@@ -23,6 +24,13 @@ class Navbar extends Component
      */
     public function render()
     {
-        return view('components.navbar');
+        $profile = Auth::user()->guest;
+        
+        if(Auth::user()->role == 'staff') {
+            return view('components.navbar_staff');
+        }
+
+        $profile->role = 'guest';
+        return view('components.navbar', ['profile' => $profile]);
     }
 }

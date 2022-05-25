@@ -3,13 +3,15 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuestbookController;
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\LoanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('login');
 });
 
 
@@ -20,6 +22,16 @@ Route::middleware(['auth', 'nonstaff'])->group(function() {
         Route::get('/create', [GuestbookController::class, 'create'])->name('guestbook.create');
         Route::post('/create', [GuestbookController::class, 'store']);
         Route::get('history', [GuestbookController::class, 'history'])->name('guestbook.history');
+    });
+
+    Route::prefix('inventories')->group(function() {
+        Route::get('/list', [InventoryController::class, 'list'])->name('inventories.list');
+    });
+    
+    Route::prefix('loans')->group(function() {
+        Route::get('/create/{iventory:id}', [LoanController::class, 'create'])->name('loans.create');
+        Route::post('/store', [LoanController::class, 'store'])->name('loans.store');
+        Route::get('/history', [LoanController::class, 'history'])->name('loans.history');
     });
 });
 
