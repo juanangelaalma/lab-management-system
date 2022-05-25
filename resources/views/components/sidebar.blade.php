@@ -107,7 +107,7 @@
             </a>
         </li>
         <li class="menu-item{{ $active == "feedback" ? " active" : '' }}">
-            <a href="/staff/dashboard" class="menu-link">
+            <a href="{{ route('feedback.create') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-message-dots"></i>
                 <div data-i18n="Analytics">Saran dan Masukkan</div>
             </a>
