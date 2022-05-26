@@ -52,8 +52,20 @@ Route::middleware(['auth', 'nonstaff'])->group(function() {
     });
 });
 
-Route::middleware(['auth', 'staff'])->group(function() {
-    Route::get('/staff/dashboard', [DashboardController::class, 'staff'])->name('staff.dashboard');
+Route::middleware(['auth', 'staff'])->prefix('staff')->group(function() {
+    Route::get('/dashboard', [DashboardController::class, 'staff'])->name('staff.dashboard');
+
+
+    Route::prefix('inventories')->group(function() {
+        Route::get('/', [InventoryController::class, 'table'])->name('staff.inventories.table');
+
+        Route::get('/create', [InventoryController::class, 'create'])->name('staff.inventories.create');
+        Route::post('/create', [InventoryController::class, 'store']);
+        Route::get('/{inventory:id}/edit', [InventoryController::class, 'edit'])->name('staff.inventories.edit');
+        Route::put('/{inventory:id}/edit', [InventoryController::class, 'update']);
+        Route::delete('/{inventory:id}/delete', [InventoryController::class, 'destroy'])->name('staff.inventories.delete');
+    });
+    
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

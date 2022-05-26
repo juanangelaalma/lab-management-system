@@ -23,6 +23,17 @@ class InventoryController extends Controller
     }
 
     /**
+     * Display a table of the resources for staff
+     * @return \Illuminate\Http\Response
+     */
+    public function table()
+    {
+        return view('staff.inventories.table', [
+            'inventories' => Inventory::latest()->get(),
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -85,6 +96,7 @@ class InventoryController extends Controller
      */
     public function destroy(Inventory $inventory)
     {
-        //
+        $inventory->delete();
+        return back()->with('success', 'Berhasil menghapus item!');
     }
 }
