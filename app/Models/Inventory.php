@@ -9,6 +9,8 @@ class Inventory extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['item_code', 'name', 'category_id', 'condition', 'description'];
+
     public function loans() {
         return $this->hasMany(Loan::class);
     }

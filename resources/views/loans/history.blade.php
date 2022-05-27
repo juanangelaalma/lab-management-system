@@ -27,8 +27,8 @@
                       @foreach ($loans as $loan)
                       <tr>
                         <td>{{ $no }}</td>
-                        <td>{{ $loan->inventory->item_code }}</td>
-                        <td>{{ $loan->inventory->name }}</td>
+                        <td class="{{ $loan->inventory ? ''  : 'text-danger' }}">{{ $loan->inventory ? $loan->inventory->item_code : 'DELETED' }}</td>
+                        <td class="{{ $loan->inventory ? ''  : 'text-danger' }}">{{ $loan->inventory ? $loan->inventory->name : 'DELETED' }}</td>
                         <td>{{ $loan->start }}</td>
                         <td>{{ $loan->end }}</td>
                         <td><span class="badge me-1 {{ $loan->status === 'not returned' ? 'bg-label-danger' : 'bg-label-primary' }}">{{ $loan->status }}</span></td>
