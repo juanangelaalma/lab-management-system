@@ -151,7 +151,7 @@
 
                         <p class="text-center">
                             <span>Belum mempunyai akun?</span>
-                            <a href="auth-register-basic.html">
+                            <a href="/register">
                                 <span>Buat Akun</span>
                             </a>
                         </p>
