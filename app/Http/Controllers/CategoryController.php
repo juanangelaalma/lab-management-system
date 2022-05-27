@@ -14,7 +14,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('staff.categories.table', [
+            'categories'    => Category::all(),
+        ]);
     }
 
     /**
