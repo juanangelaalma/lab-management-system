@@ -48,7 +48,9 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        dd($event->id);
+        return view('lab.read', [
+            'info'  => $event
+        ]);
     }
 
     /**

@@ -33,7 +33,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title mb-3 text-center text-warning">Pinjam</h5>
-                                <h1 class="card-title mb-3 text-center text-warning">{{ $guestbook_total }}</h1>
+                                <h1 class="card-title mb-3 text-center text-warning">{{ $loans_total }}</h1>
                                 <p class="fw-semibold mb-0 text-center text-warning">Kali</p>
                             </div>
                         </div>
