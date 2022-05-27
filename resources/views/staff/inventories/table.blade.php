@@ -33,7 +33,7 @@
                     <span class="badge me-1{{ $inventory->condition === 'bad' ? ' bg-label-danger' : ' bg-label-primary' }}">{{ ($inventory->condition == 'bad' ? '😥 ' : '🙂 ') . $inventory->condition }}</span>
                   </td>
                   <td>
-                    <a class="btn btn-sm btn-info" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                    <a class="btn btn-sm btn-info" href="{{ route('staff.inventories.edit', $inventory) }}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
                     <button id="btnDelete" onclick="deleteRecord({{ $inventory->id }})" type="button" data-bs-toggle="modal" data-bs-target="#modalDelete" class="btn btn-sm btn-danger"><i class="bx bx-trash me-1"></i> Delete</button>
                   </td>
                 </tr>                    

@@ -6,6 +6,8 @@ use App\Models\Inventory;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class InventoryController extends Controller
 {
@@ -90,7 +92,10 @@ class InventoryController extends Controller
      */
     public function edit(Inventory $inventory)
     {
-        //
+        return view('staff.inventories.edit', [
+            'inventory' => $inventory,
+            'categories'=> Category::all()
+        ]);
     }
 
     /**
@@ -100,9 +105,26 @@ class InventoryController extends Controller
      * @param  \App\Models\Inventory  $inventory
      * @return \Illuminate\Http\Response
      */
-    public function update(Inventory $inventory)
+    public function update(Inventory $inventory, Request $request)
     {
-        //
+        $categories_id = Category::where('id', '>', 0)->pluck('id')->all();
+        $categories_id = implode(',', $categories_id);
+        
+        request()->validate([
+            'item_code'     => ['required', Rule::unique('inventories', 'item_code')->ignore($inventory)],
+            'name'          => 'required',
+            'category_id'   => "required|in:$categories_id",
+            'condition'     => 'required|in:good,bad',
+        ]);
+
+        $inventory->update([
+            'item_code'     => $request->item_code,
+            'name'          => $request->name,
+            'category_id'   => $request->category_id,
+            'condition'     => $request->condition,
+        ]);
+
+        return redirect(route('staff.inventories.table'))->with('success', 'Berhasil memperbarui data!');
     }
 
     /**
