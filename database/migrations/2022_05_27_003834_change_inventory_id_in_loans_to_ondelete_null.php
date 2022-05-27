@@ -14,6 +14,7 @@ class ChangeInventoryIdInLoansToOndeleteNull extends Migration
     public function up()
     {
         Schema::table('loans', function (Blueprint $table) {
+            $table->dropForeign('loans_inventory_id_foreign');
             $table->foreign('inventory_id')->references('id')->on('inventories')->nullOnDelete();
         });
     }
