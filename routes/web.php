@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FeedbackController;
@@ -66,6 +67,15 @@ Route::middleware(['auth', 'staff'])->prefix('staff')->group(function() {
         Route::delete('/{inventory:id}/delete', [InventoryController::class, 'destroy'])->name('staff.inventories.delete');
     });
     
+    Route::prefix('categories')->group(function() {
+        Route::get('/', [CategoryController::class, 'index'])->name('staff.categories.table');
+
+        Route::get('/create', [CategoryController::class, 'create'])->name('staff.categories.create');
+        Route::post('/create', [CategoryController::class, 'store']);
+        Route::get('/{category:id}/edit', [CategoryController::class, 'edit'])->name('staff.categories.edit');
+        Route::put('/{category:id}/edit', [CategoryController::class, 'update']);
+        Route::delete('/{category:id}/delete', [CategoryController::class, 'destroy'])->name('staff.categories.delete');
+    });
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
