@@ -81,6 +81,16 @@ Route::middleware(['auth', 'staff'])->prefix('staff')->group(function() {
         Route::get('/', [LoanController::class, 'index'])->name('staff.loans.table');
         Route::put('/{loan:id}/asdone', [LoanController::class, 'asdone']);
     });
+
+    Route::prefix('info')->group(function() {
+        Route::get('/', [EventController::class, 'table'])->name('staff.info.table');
+
+        Route::get('/create', [EventController::class, 'create'])->name('staff.info.create');
+        Route::post('/create', [EventController::class, 'store']);
+        Route::get('/{event:id}/edit', [EventController::class, 'edit'])->name('staff.info.edit');
+        Route::put('/{event:id}/edit', [EventController::class, 'update']);
+        Route::delete('/{event:id}/delete', [EventController::class, 'destroy'])->name('staff.info.delete');
+    });
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

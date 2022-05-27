@@ -19,6 +19,12 @@ class EventController extends Controller
         ]);
     }
 
+    public function table() {
+        return view('staff.info.table', [
+            'events'    => Event::latest()->get(),
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
