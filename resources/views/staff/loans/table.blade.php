@@ -1,37 +1,40 @@
-@extends('layouts.app', ['active' => 'categories'])
+@extends('layouts.app', ['active' => 'loans'])
 
 @section('content')
     <!-- Content -->
 
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4">Tabel Kategori</h4>
+        <h4 class="fw-bold py-3 mb-4">Tabel Inventori</h4>
         
         <!-- Basic Bootstrap Table -->
         <div class="card pb-2">
           <x-alert></x-alert>
-          <div class="card-header">
-            <a href="{{ route('staff.categories.create') }}" class="btn btn-primary btn-lg text-white"> <i class="bx bx-plus"></i> Tambah Kategori</a>
-          </div>
           <div class="table-responsive text-nowrap">
             <table class="table">
               <thead>
                 <tr>
-                  <th>Nomor</th>
-                  <th>Nama</th>
+                  <th>No</th>
+                  <th>Kode Barang</th>
+                  <th>Peminjam</th>
+                  <th>Mulai</th>
+                  <th>Perjanjian kembali</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody class="table-border-bottom-0">
                 @php $no=1 @endphp
-                @foreach ($categories as $category)
+                @foreach ($loans as $loan)
                 <tr>
                   <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $no }}</strong></td>
-                  <td>{{ $category->name }}</td>
+                  <td>{{ $loan->inventory ? $loan->inventory->item_code : '' }}</td>
+                  <td>{{ $loan->guest->name }}</td>
+                  <td>{{ $loan->start }}</td>
+                  <td>{{ $loan->end }}</td>
                   <td>
-                    <a class="btn btn-sm btn-info" href="{{ route('staff.categories.edit', $category) }}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                    <button id="btnDelete" onclick="deleteRecord({{ $category->id }})" type="button" data-bs-toggle="modal" data-bs-target="#modalDelete" class="btn btn-sm btn-danger"><i class="bx bx-trash me-1"></i> Delete</button>
+                    <button id="btnDone" onclick="asDone({{ $loan->id }})" type="button" data-bs-toggle="modal" data-bs-target="#modalDone" class="btn btn-sm btn-info"><i class='bx bx-check-circle'></i> As Done</button>
                   </td>
-                </tr>
-                @php $no++ @endphp                    
+                </tr>                    
+                @php $no++ @endphp
                 @endforeach
               </tbody>
             </table>
@@ -41,7 +44,7 @@
     </div>
 
     {{-- Modal --}}
-    <div class="modal fade" id="modalDelete" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="modalDone" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -51,10 +54,10 @@
             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
               Close
             </button>
-            <form id="confirmDelete" method="post">
+            <form id="confirmDone" method="post">
               @csrf
-              @method("DELETE")
-              <button type="submit" class="btn btn-danger">DELETE</button>
+              @method("PUT")
+              <button type="submit" class="btn btn-info"><i class='bx bx-check-circle'></i> As Done</button>
             </form>
           </div>
         </div>
@@ -66,9 +69,9 @@
 
 @section('scripts')
 <script>
-  function deleteRecord(id) {
-    const confirmDelete = document.getElementById('confirmDelete')
-    confirmDelete.setAttribute('action', `/staff/categories/${id}/delete`)
+  function asDone(id) {
+    const confirmDone = document.getElementById('confirmDone')
+    confirmDone.setAttribute('action', `/staff/loans/${id}/asdone`)
   }
 </script>
 @endsection

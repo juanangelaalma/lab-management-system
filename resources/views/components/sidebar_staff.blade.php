@@ -62,7 +62,13 @@
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
         </li>
-        <li class="menu-item{{ $active == "loans" || $active == "inventories_list" ? " active" : '' }}">
+        <li class="menu-item{{ $active == "loans" ? " active" : '' }}">
+            <a href="{{ route('staff.loans.table') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Daftar Peminjaman</div>
+            </a>
+        </li>
+        <li class="menu-item{{ $active == "categories" || $active == "inventories_list" ? " active" : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-book-content"></i>
                 <div data-i18n="Layouts">Inventory</div>
