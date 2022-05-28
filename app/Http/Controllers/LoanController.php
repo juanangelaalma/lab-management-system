@@ -10,7 +10,17 @@ use Illuminate\Support\Facades\Auth;
 class LoanController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a lisitng of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index() {
+        return view('staff.loans.table', [
+            'loans' => Loan::where('status', 'not returned')->orderBy('created_at')->get()
+        ]);
+    }
+    /**
+     * Display a history of the resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -61,6 +71,14 @@ class LoanController extends Controller
         ]);
 
         return redirect('/loans/history')->with('success', 'Sukses mengajukan peminjaman');
+    }
+
+    public function asdone(Loan $loan) {
+        $loan->update([
+            'status'  => 'returned'
+        ]);
+
+        return back();
     }
 
     /**

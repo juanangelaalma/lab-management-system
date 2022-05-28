@@ -76,6 +76,11 @@ Route::middleware(['auth', 'staff'])->prefix('staff')->group(function() {
         Route::put('/{category:id}/edit', [CategoryController::class, 'update']);
         Route::delete('/{category:id}/delete', [CategoryController::class, 'destroy'])->name('staff.categories.delete');
     });
+
+    Route::prefix('loans')->group(function() {
+        Route::get('/', [LoanController::class, 'index'])->name('staff.loans.table');
+        Route::put('/{loan:id}/asdone', [LoanController::class, 'asdone']);
+    });
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
