@@ -13,12 +13,12 @@
                   @foreach ($events as $event)
                   <div class="col-md-6 col-lg-4 mb-3">
                     <div class="card">
-                      <img class="card-img-top" src="https://picsum.photos/300/300">
+                      <img class="card-img-top" src="/storage/assets/img/events/thumbs/{{ $event->image }}">
                       <div class="card-header py-3">{{ timestamp_to_indo_date($event->start) }}</div>
                       <div class="card-body">
                         <h5 class="card-title">{{ $event->name }}</h5>
                         <p class="card-text">
-                          {{ strip_tags(substr($event->description, 0, 100), null) }} ...
+                          {{ strip_tags(substr($event->description, 0, 700), null) }} ...
                         </p>
                         <a href="{{ route('event.show', $event) }}" class="btn btn-primary">Selengkapnya</a>
                       </div>
