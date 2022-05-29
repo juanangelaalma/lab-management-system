@@ -17,8 +17,8 @@
                           <i class='bx bxs-calendar'></i>
                           <h6 class="mb-4 d-inline-block">{{ $info->start }}</h6>
                         </div>
-                        <img src="{{ $info->image }}" class="img-responsive rounded mb-4" alt="">
-                        <p style="line-height: 2rem;">{{ $info->description }}</p>
+                        <img src="/storage/assets/img/events/thumbs/{{ $info->image }}" class="img-responsive rounded mb-4" alt="">
+                        <p style="line-height: 2rem;">{!! $info->description !!}</p>
                     </div>
 
                 </div>
