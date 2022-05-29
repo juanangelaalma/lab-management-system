@@ -29,7 +29,7 @@
                 <tr>
                   <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $no }}</strong></td>
                   <td>
-                    <img class="img-responsive rouded" style="max-width: 50px;border-radius: 10%;" src="{{ $event->image }}" alt="{{ $event->name }}">
+                    <img style="object-fit: cover;object-position: center;" class="d-block rounded" height="50" width="50" src="/storage/assets/img/events/thumbs/{{ $event->image }}" alt="{{ $event->name }}">
                   </td>
                   <td>{{ $event->name }}</td>
                   <td>{{ $event->responsible }}</td>

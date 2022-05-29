@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CKEditorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FeedbackController;
@@ -86,11 +87,14 @@ Route::middleware(['auth', 'staff'])->prefix('staff')->group(function() {
         Route::get('/', [EventController::class, 'table'])->name('staff.info.table');
 
         Route::get('/create', [EventController::class, 'create'])->name('staff.info.create');
-        Route::post('/create', [EventController::class, 'store']);
+        Route::post('/create', [EventController::class, 'store'])->name('staff.info.store');
         Route::get('/{event:id}/edit', [EventController::class, 'edit'])->name('staff.info.edit');
         Route::put('/{event:id}/edit', [EventController::class, 'update']);
         Route::delete('/{event:id}/delete', [EventController::class, 'destroy'])->name('staff.info.delete');
     });
+
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::view('test', 'test');
