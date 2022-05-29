@@ -110,7 +110,9 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        return view('staff.info.edit', [
+            'event'    => $event
+        ]);
     }
 
     /**
@@ -122,7 +124,56 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+        // dd($request->description);
+        $request->validate([
+            'name'          => 'required',
+            'responsible'   => 'required',
+            'start'         => 'required',
+            'end'           => 'required',
+        ]);
+
+        if($request->image) {
+            $thumbnailName = time().'.'.$request->image->extension();
+
+            $request->image->storeAs("/assets/img/events/thumbs/", $thumbnailName, 'public');
+
+            Storage::delete('public/assets/img/events/thumbs/' . $event->image);
+
+            $event->image = $thumbnailName;
+        }
+
+        $description = $request->description;
+        $dom = new \DomDocument();
+        @$dom->loadHtml($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $imageFile = $dom->getElementsByTagName('img');
+
+        foreach($imageFile as $item => $image) {
+            $data = $image->getAttribute('src');
+            if(str_contains($data, ";")){
+                list($type, $data) = explode(';', $data);
+                list($temp, $data) = explode(',', $data);
+                $imgeData = base64_decode($data);
+                $image_name= "/assets/img/events/" . time().$item.'.png';
+                $path = public_path() . $image_name;
+                file_put_contents($path, $imgeData);
+                
+                $image->removeAttribute('src');
+                $image->setAttribute('src', $image_name);
+            }
+        }
+
+        $description = $dom->saveHTML();
+
+
+        $event->name = $request->name;
+        $event->responsible = $request->responsible;
+        $event->start = $request->start;
+        $event->end = $request->end;
+        $event->description = $description;
+
+        $event->save();
+
+        return back();
     }
 
     /**

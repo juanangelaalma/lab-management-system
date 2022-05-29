@@ -89,7 +89,7 @@ Route::middleware(['auth', 'staff'])->prefix('staff')->group(function() {
         Route::get('/create', [EventController::class, 'create'])->name('staff.info.create');
         Route::post('/create', [EventController::class, 'store'])->name('staff.info.store');
         Route::get('/{event:id}/edit', [EventController::class, 'edit'])->name('staff.info.edit');
-        Route::put('/{event:id}/edit', [EventController::class, 'update']);
+        Route::put('/{event:id}/edit', [EventController::class, 'update'])->name('staff.info.update');
         Route::delete('/{event:id}/delete', [EventController::class, 'destroy'])->name('staff.info.delete');
     });
 
