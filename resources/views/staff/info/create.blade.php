@@ -4,7 +4,7 @@
     <!-- Content -->
 
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4">Tambah Kategori</h4>
+        <h4 class="fw-bold py-3 mb-4">Tambah Info</h4>
 
         <!-- Basic Bootstrap Table -->
         <div class="card pb-2">
