@@ -26,10 +26,10 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="html5-datetime-local-input" class="col-md-2 col-form-label">Mulai</label>
+                                <label for="html5-time-input" class="col-md-2 col-form-label">Mulai</label>
                                 <div class="col-md-10">
-                                    <input class="form-control" name="start" type="datetime-local"
-                                        id="html5-datetime-local-input" />
+                                    <input class="form-control" name="start" type="time"
+                                        id="html5-time-input" />
                                     @error('start')
                                         <span class="text-danger" role="alert">
                                             <p class="m-0 mt-2">{{ $message }}</p>
@@ -38,10 +38,10 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="html5-datetime-local-input" class="col-md-2 col-form-label">Selesai</label>
+                                <label for="html5-time-input" class="col-md-2 col-form-label">Selesai</label>
                                 <div class="col-md-10">
-                                    <input class="form-control" name="end" type="datetime-local"
-                                        id="html5-datetime-local-input" />
+                                    <input class="form-control" name="end" type="time"
+                                        id="html5-time-input" />
                                     @error('end')
                                         <span class="text-danger" role="alert">
                                             <p class="m-0 mt-2">{{ $message }}</p>
