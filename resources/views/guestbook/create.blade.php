@@ -1,4 +1,4 @@
-@extends('layouts.app', ['active' => 'guestbook'])
+@extends('layouts.app', ['active' => 'guestbook', 'title' => 'Buku Tamu'])
 
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">

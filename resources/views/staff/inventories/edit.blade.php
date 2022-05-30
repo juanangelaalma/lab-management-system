@@ -1,4 +1,4 @@
-@extends('layouts.app', ['active' => 'inventories'])
+@extends('layouts.app', ['active' => 'inventories', 'title' => 'Edit Inventory'])
 
 @section('content')
     <!-- Content -->
