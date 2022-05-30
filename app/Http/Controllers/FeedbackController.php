@@ -15,7 +15,9 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        //
+        return view('staff.feedback.list', [
+            'feedback'      => Feedback::latest()->get()
+        ]);
     }
 
     /**
