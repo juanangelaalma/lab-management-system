@@ -70,7 +70,7 @@
       </li>
       <li class="menu-item{{ $active == "loans" ? " active" : '' }}">
           <a href="{{ route('staff.loans.table') }}" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-list-ol"></i>
+              <i class="menu-icon tf-icons bx bx-list-ul"></i>
               <div data-i18n="Analytics">Daftar Peminjaman</div>
           </a>
       </li>
@@ -97,6 +97,18 @@
         <a href="{{ route('staff.info.table') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-news"></i>
             <div data-i18n="Analytics">Info Lab</div>
+        </a>
+    </li>
+    <li class="menu-item{{ $active == "users" ? " active" : '' }}">
+        <a href="{{ route('staff.guests.table') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-user-pin"></i>
+            <div data-i18n="Analytics">Users</div>
+        </a>
+    </li>
+    <li class="menu-item{{ $active == "feedback" ? " active" : '' }}">
+        <a href="{{ route('staff.feedback.table') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-info-circle"></i>
+            <div data-i18n="Analytics">Feedback</div>
         </a>
     </li>
   </ul>

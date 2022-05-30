@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\GuestbookController;
+use App\Http\Controllers\GuestController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\LoanController;
 use App\Http\Controllers\ProfileController;
@@ -91,6 +92,18 @@ Route::middleware(['auth', 'staff'])->prefix('staff')->group(function() {
         Route::get('/{event:id}/edit', [EventController::class, 'edit'])->name('staff.info.edit');
         Route::put('/{event:id}/edit', [EventController::class, 'update'])->name('staff.info.update');
         Route::delete('/{event:id}/delete', [EventController::class, 'destroy'])->name('staff.info.delete');
+    });
+
+    Route::get('guestbook', [GuestbookController::class, 'index'])->name('staff.guestbook.table');
+
+    Route::get('feedback', [FeedbackController::class, 'index'])->name('staff.feedback.table');
+
+    Route::prefix('guests')->group(function() {
+        Route::get('/', [GuestController::class, 'index'])->name('staff.guests.table');
+
+        Route::get('{user:id}/details', [GuestController::class, 'details'])->name('staff.guests.details');
+
+        Route::delete('{guest:id}/delete', [GuestController::class, 'destroy'])->name('staff.guests.delete');
     });
 
 });
