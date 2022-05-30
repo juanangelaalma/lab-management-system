@@ -44,12 +44,13 @@ class GuestbookController extends Controller
             'start'     => 'required',
             'end'       => 'required',
         ]);
-        
         Guestbook::create([
             'guest_id'    => Auth::user()->guest->id,
             'purpose'     => $request->purpose,
-            'start'       => $request->start,
-            'end'         => $request->end,
+            // 'start'       => $request->start,
+            'start'       => date('Y-m-d') . " $request->start",
+            // 'end'         => $request->end,
+            'end'         => date('Y-m-d') . " $request->end",
             'description' => $request->description,
         ]);
         

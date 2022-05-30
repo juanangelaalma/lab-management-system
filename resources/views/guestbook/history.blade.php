@@ -1,4 +1,4 @@
-@extends('layouts.app', ['active' => 'guestbook_hist'])
+@extends('layouts.app', ['active' => 'guestbook_hist', 'title' => 'History'])
 
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">

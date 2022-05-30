@@ -1,4 +1,4 @@
-@extends('layouts.app', ['active' => 'categories'])
+@extends('layouts.app', ['active' => 'categories', 'title' => 'Edit Kategori'])
 
 @section('content')
     <!-- Content -->
