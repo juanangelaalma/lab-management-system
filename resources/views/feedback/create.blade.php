@@ -1,4 +1,4 @@
-@extends('layouts.app', ['active' => 'feedback'])
+@extends('layouts.app', ['active' => 'feedback', 'title' => 'Feedback'])
 
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
