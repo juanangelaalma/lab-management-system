@@ -39,28 +39,6 @@
         <!--/ Basic Bootstrap Table -->
     </div>
 
-    {{-- Modal --}}
-    <div class="modal fade" id="modalDelete" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalCenterTitle">Apakah kamu yakin?</h5>
-          </div>
-          <div class="modal-footer pt-4">
-            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-              Close
-            </button>
-            <form id="confirmDelete" method="post">
-              @csrf
-              @method("DELETE")
-              <button type="submit" class="btn btn-danger">DELETE</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- / Content -->
 @endsection
 
 @section('scripts')
