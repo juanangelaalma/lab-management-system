@@ -11,7 +11,7 @@
                 <div class="row mb-5">
 
                     <div class="card p-4">
-                        <h1 class="text-left">{{ $info->name }} Pertunjukan seni reog barong di dalam laboratorium
+                        <h1 class="text-left">{{ $info->name }}
                         </h1>
                         <div class="text-left">
                           <i class='bx bxs-calendar'></i>
