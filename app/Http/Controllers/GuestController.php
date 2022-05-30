@@ -21,6 +21,12 @@ class GuestController extends Controller
         ]);
     }
 
+    public function details(User $user) {
+        return view('staff.guest.details', [
+            'details'   => $user
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

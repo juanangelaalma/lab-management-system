@@ -33,7 +33,7 @@
                   <td>{{ $user->email }}</td>
                   <td>{{ $user->guest->name }}</td>
                   <td>
-                    <a class="btn btn-info btn-sm text-white"><i class="bx bxs-user-detail"></i> Detail</a>
+                    <a href="{{ route('staff.guests.details', $user) }}" class="btn btn-info btn-sm text-white"><i class="bx bxs-user-detail"></i> Detail</a>
                   </td>
                 </tr>
                 @php $no++ @endphp                    
@@ -48,10 +48,4 @@
 @endsection
 
 @section('scripts')
-<script>
-  function deleteRecord(id) {
-    const confirmDelete = document.getElementById('confirmDelete')
-    confirmDelete.setAttribute('action', `/staff/info/${id}/delete`)
-  }
-</script>
 @endsection

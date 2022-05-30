@@ -101,6 +101,8 @@ Route::middleware(['auth', 'staff'])->prefix('staff')->group(function() {
     Route::prefix('guests')->group(function() {
         Route::get('/', [GuestController::class, 'index'])->name('staff.guests.table');
 
+        Route::get('{user:id}/details', [GuestController::class, 'details'])->name('staff.guests.details');
+
         Route::delete('{guest:id}/delete', [GuestController::class, 'destroy'])->name('staff.guests.delete');
     });
 
