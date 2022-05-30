@@ -1,4 +1,4 @@
-@extends('layouts.app', ['active' => 'profile'])
+@extends('layouts.app', ['active' => 'profile', 'title' => 'Profile'])
 
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">

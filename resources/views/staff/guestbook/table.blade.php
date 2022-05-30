@@ -1,4 +1,4 @@
-@extends('layouts.app', ['active' => 'guestbook'])
+@extends('layouts.app', ['active' => 'guestbook', 'title' => 'Kunjungan'])
 
 @section('content')
     <!-- Content -->

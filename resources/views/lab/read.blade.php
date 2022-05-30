@@ -1,4 +1,4 @@
-@extends('layouts.app', ['active' => 'lab_info'])
+@extends('layouts.app', ['active' => 'lab_info', 'title' => 'Info'])
 
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">

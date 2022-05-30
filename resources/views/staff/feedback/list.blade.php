@@ -1,4 +1,4 @@
-@extends('layouts.app', ['active' => 'feedback'])
+@extends('layouts.app', ['active' => 'feedback', 'title' => 'Feedback'])
 
 @section('content')
     <!-- Content -->
