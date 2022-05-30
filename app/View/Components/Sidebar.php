@@ -28,7 +28,7 @@ class Sidebar extends Component
         $user = Auth::user();
 
         if($user->role == 'staff') {
-            return view('components.sidebarStaff');
+            return view('components.sidebar_staff');
         }
 
         return view('components.sidebar');
