@@ -86,7 +86,7 @@
                       <div data-i18n="Without menu">Tabel Inventory</div>
                   </a>
               </li>
-              <li class="menu-item{{ $active == "loans" ? " active" : '' }}">
+              <li class="menu-item{{ $active == "categories" ? " active" : '' }}">
                   <a href="{{ route("staff.categories.table") }}" class="menu-link">
                       <div data-i18n="Without menu">Kategori</div>
                   </a>
