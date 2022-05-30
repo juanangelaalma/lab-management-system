@@ -16,7 +16,9 @@ class GuestbookController extends Controller
      */
     public function index()
     {
-        //
+        return view('staff.guestbook.table', [
+            'guestbook'    => Guestbook::latest()->get()
+        ]);
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guest;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,15 @@ class GuestController extends Controller
      */
     public function index()
     {
-        //
+        return view('staff.guest.table', [
+            'users' => User::where('role', 'guest')->get()
+        ]);
+    }
+
+    public function details(User $user) {
+        return view('staff.guest.details', [
+            'details'   => $user
+        ]);
     }
 
     /**

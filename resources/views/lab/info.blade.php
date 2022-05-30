@@ -18,7 +18,7 @@
                       <div class="card-body">
                         <h5 class="card-title">{{ $event->name }}</h5>
                         <p class="card-text">
-                          {{ strip_tags(substr($event->description, 0, 700), null) }} ...
+                          {{ strip_tags(substr($event->description, 0, 300), null) }} ...
                         </p>
                         <a href="{{ route('event.show', $event) }}" class="btn btn-primary">Selengkapnya</a>
                       </div>
