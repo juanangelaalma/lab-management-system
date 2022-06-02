@@ -25,7 +25,7 @@
                 <tr>
                   <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $no }}</strong></td>
                   <td>
-                    <span class="badge me-1 bg-label-warning">{{ timestamp_to_indo_date($item->start) }}</span>
+                    <span class="badge me-1 bg-label-primary">{{ timestamp_to_indo_date($item->start) }}</span>
                   </td>
                   <td>{{ $item->guest->name }}</td>
                   <td>{{ $item->purpose }}</td>
