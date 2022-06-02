@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guestbook;
+use App\Models\Inventory;
+use App\Models\Loan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -50,7 +52,9 @@ class DashboardController extends Controller
     public function staff() {
         return view('staff.dashboard', [
             'months'          => $this->getCountAllMonthStaff(),
-            'guestbooks'      => Guestbook::whereDate("start", date("Y-m-d"))->get()
+            'guestbooks'      => Guestbook::whereDate("start", date("Y-m-d"))->get(),
+            'inventories'     => Inventory::latest()->limit(5)->get(),
+            'loans'           => Loan::latest()->limit(5)->get()
         ]);
     }
 }

@@ -107,14 +107,20 @@
 }
 ::-webkit-scrollbar {
   width: 2px;
-  height: 10px;
+  max-height: 10px;
 }
 /* Track */
 ::-webkit-scrollbar-track {
   border-radius: 10px;
+  max-height: 10px;
+}
+
+::-webkit-scrollbar-track-piece {
+  max-height: 10px;
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #696CFF; 
   border-radius: 10px;
+  max-height: 10px;
 }
