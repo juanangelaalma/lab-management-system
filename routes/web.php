@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\CKEditorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FeedbackController;
@@ -23,75 +22,84 @@ Route::get('/', function () {
 Route::middleware(['auth', 'nonstaff'])->group(function() {
     Route::get('dashboard', [DashboardController::class, 'guest'])->name('dashboard');  // nonstaff means guest because the middleware have double guest name
 
-    Route::prefix('guestbook')->group(function() {
-        Route::get('/create', [GuestbookController::class, 'create'])->name('guestbook.create');
-        Route::post('/create', [GuestbookController::class, 'store']);
-        Route::get('history', [GuestbookController::class, 'history'])->name('guestbook.history');
+    Route::controller(GuestbookController::class)->prefix('guestbook')->name('guestbook.')->group(function(){
+        Route::get('create', 'create')->name('create');
+        Route::post('create', 'store');
+        Route::get('history', 'history')->name('history');
     });
 
     Route::prefix('inventories')->group(function() {
         Route::get('/list', [InventoryController::class, 'list'])->name('inventories.list');
     });
-    
-    Route::prefix('loans')->group(function() {
-        Route::get('/create/{iventory:id}', [LoanController::class, 'create'])->name('loans.create');
-        Route::post('/store', [LoanController::class, 'store'])->name('loans.store');
-        Route::get('/history', [LoanController::class, 'history'])->name('loans.history');
+
+    Route::controller(LoanController::class)->prefix('loans')->name('loans.')->group(function() {
+        Route::get('create/{inventory:id}', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('history', 'history')->name('history');
     });
 
-    Route::prefix('lab')->group(function() {
-        Route::get('/info', [EventController::class, 'index'])->name('lab.info');
-        Route::get('/info/{event:id}', [EventController::class, 'show'])->name('event.show');
+    Route::controller(EventController::class)->prefix('lab')->group(function() {
+        Route::get('info', 'index')->name('lab.info');
+        Route::get('info/{event:id}', 'show')->name('event.show');
     });
 
-    Route::prefix('feedback')->group(function() {
-        Route::get('create', [FeedbackController::class, 'create'])->name('feedback.create');
-        Route::post('create', [FeedbackController::class, 'store']);
+    Route::controller(FeedbackController::class)->prefix('feedback')->name('feedback.')->group(function() {
+        Route::get('create', 'create')->name('create');
+        Route::post('create', 'store');
     });
 
-    Route::prefix('profile')->group(function() {
-        Route::get('/', [ProfileController::class, 'index'])->name('profile');
-        Route::put('/', [ProfileController::class, 'update'])->name('profile.update');
+    Route::controller(ProfileController::class)->prefix('profile')->group(function() {
+        Route::get('/', 'index')->name('profile');
+        Route::put('/', 'update')->name('profile.update');
     });
 });
 
 Route::middleware(['auth', 'staff'])->prefix('staff')->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'staff'])->name('staff.dashboard');
 
+    Route::controller(InventoryController::class)->prefix('inventories')->name('staff.inventories.')->group(function() {
+        Route::get('/', 'table')->name('table');
 
-    Route::prefix('inventories')->group(function() {
-        Route::get('/', [InventoryController::class, 'table'])->name('staff.inventories.table');
-
-        Route::get('/create', [InventoryController::class, 'create'])->name('staff.inventories.create');
-        Route::post('/create', [InventoryController::class, 'store']);
-        Route::get('/{inventory:id}/edit', [InventoryController::class, 'edit'])->name('staff.inventories.edit');
-        Route::put('/{inventory:id}/edit', [InventoryController::class, 'update']);
-        Route::delete('/{inventory:id}/delete', [InventoryController::class, 'destroy'])->name('staff.inventories.delete');
+        Route::get('create', 'create')->name('create');
+        Route::post('create', 'store');
+        Route::get('{inventory:id}/edit', 'edit')->name('edit');
+        Route::put('{inventory:id}/edit', 'update');
+        Route::delete('{inventory:id}/delete', 'destroy')->name('delete');
     });
     
-    Route::prefix('categories')->group(function() {
-        Route::get('/', [CategoryController::class, 'index'])->name('staff.categories.table');
+    // Route::prefix('categories')->group(function() {
+    //     Route::get('/', [CategoryController::class, 'index'])->name('staff.categories.table');
 
-        Route::get('/create', [CategoryController::class, 'create'])->name('staff.categories.create');
-        Route::post('/create', [CategoryController::class, 'store']);
-        Route::get('/{category:id}/edit', [CategoryController::class, 'edit'])->name('staff.categories.edit');
-        Route::put('/{category:id}/edit', [CategoryController::class, 'update']);
-        Route::delete('/{category:id}/delete', [CategoryController::class, 'destroy'])->name('staff.categories.delete');
+    //     Route::get('/create', [CategoryController::class, 'create'])->name('staff.categories.create');
+    //     Route::post('/create', [CategoryController::class, 'store']);
+    //     Route::get('/{category:id}/edit', [CategoryController::class, 'edit'])->name('staff.categories.edit');
+    //     Route::put('/{category:id}/edit', [CategoryController::class, 'update']);
+    //     Route::delete('/{category:id}/delete', [CategoryController::class, 'destroy'])->name('staff.categories.delete');
+    // });
+
+    Route::controller(CategoryController::class)->prefix('categories')->name('staff.categories.')->group(function() {
+        Route::get('/', 'index')->name('table');
+
+        Route::get('/create', 'create')->name('create');
+        Route::post('/create', 'store');
+        Route::get('/{category:id}/edit', 'edit')->name('edit');
+        Route::put('/{category:id}/edit', 'update');
+        Route::delete('/{category:id}/delete', 'destroy')->name('delete');
     });
 
-    Route::prefix('loans')->group(function() {
-        Route::get('/', [LoanController::class, 'index'])->name('staff.loans.table');
-        Route::put('/{loan:id}/asdone', [LoanController::class, 'asdone']);
+    Route::controller(LoanController::class)->prefix('loans')->name('staff.loans.')->group(function() {
+        Route::get('/', 'index')->name('table');
+        Route::put('{loan:id}/asdone', 'asdone');
     });
 
-    Route::prefix('info')->group(function() {
-        Route::get('/', [EventController::class, 'table'])->name('staff.info.table');
+    Route::controller(EventController::class)->prefix('info')->name('staff.info.')->group(function(){
+        Route::get('/', 'table')->name('table');
 
-        Route::get('/create', [EventController::class, 'create'])->name('staff.info.create');
-        Route::post('/create', [EventController::class, 'store'])->name('staff.info.store');
-        Route::get('/{event:id}/edit', [EventController::class, 'edit'])->name('staff.info.edit');
-        Route::put('/{event:id}/edit', [EventController::class, 'update'])->name('staff.info.update');
-        Route::delete('/{event:id}/delete', [EventController::class, 'destroy'])->name('staff.info.delete');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/create', 'store')->name('store');
+        Route::get('/{event:id}/edit', 'edit')->name('edit');
+        Route::put('/{event:id}/edit', 'update')->name('update');
+        Route::delete('/{event:id}/delete', 'destroy')->name('delete');
     });
 
     Route::get('guestbook', [GuestbookController::class, 'index'])->name('staff.guestbook.table');
@@ -104,6 +112,14 @@ Route::middleware(['auth', 'staff'])->prefix('staff')->group(function() {
         Route::get('{user:id}/details', [GuestController::class, 'details'])->name('staff.guests.details');
 
         Route::delete('{guest:id}/delete', [GuestController::class, 'destroy'])->name('staff.guests.delete');
+    });
+
+    Route::controller(GuestController::class)->prefix('guest')->name('staff.guests.')->group(function() {
+        Route::get('/', 'index')->name('table');
+
+        Route::get('{user:id}/details', 'details')->name('details');
+
+        Route::delete('{guest:id}/delete', 'destroy')->name('delete');
     });
 
 });
