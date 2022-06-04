@@ -40,9 +40,6 @@
 
     <script src="/assets/js/config.js"></script>
 
-    {{-- Data Table --}}
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
-
     @yield('styles')
 </head>
 
@@ -83,23 +80,8 @@
 
     <!-- Main JS -->
     <script src="/assets/js/main.js"></script>
-
-    <!-- Page JS -->
-    <script src="/assets/js/dashboards-analytics.js"></script>
-
-    <!-- Place this tag in your head or just before your close body tag. -->
+    
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-
-    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js">
-    </script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js">
-    </script>
-    <script>
-        $(document).ready(function() {
-            $('#data-table').DataTable();
-        });
-    </script>
     @yield('scripts')
 </body>
 

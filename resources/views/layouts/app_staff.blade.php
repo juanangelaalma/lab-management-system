@@ -28,14 +28,8 @@
     <link rel="stylesheet" href="/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
     <link rel="stylesheet" href="/assets/css/demo.css" />
 
-    <!-- Vendors CSS -->
-    {{-- <link rel="stylesheet" href="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" /> --}}
-
     <link rel="stylesheet" href="/assets/vendor/libs/apex-charts/apex-charts.css" />
 
-    <!-- Page CSS -->
-
-    <!-- Helpers -->
     <script src="/assets/vendor/js/helpers.js"></script>
 
     <script src="/assets/js/config.js"></script>
@@ -73,7 +67,7 @@
     <script src="/assets/vendor/libs/jquery/jquery.js"></script>
     <script src="/assets/vendor/libs/popper/popper.js"></script>
     <script src="/assets/vendor/js/bootstrap.js"></script>
-    <script src="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    {{-- <script src="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>  --}}
 
     <script src="/assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
@@ -85,15 +79,14 @@
     <script src="/assets/js/main.js"></script>
 
     <!-- Page JS -->
-    <script src="/assets/js/dashboards-analytics.js"></script>
+    {{-- <script src="/assets/js/dashboards-analytics.js"></script> --}}
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
-    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js">
     </script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js">
     </script>
     <script>
         $(document).ready(function() {

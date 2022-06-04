@@ -74,7 +74,7 @@
                     <label class="col-sm-2 col-form-label text-white" for="description">Deskripsi
                         (Optional)</label>
                     <div class="col-sm-10">
-                        <textarea id="description" name="description" class="form-control bg-dark text-white" placeholder="Deskripsi tujuan"
+                        <textarea id="description" name="description" class="form-control bg-dark text-white" placeholder="Deskripsi"
                             aria-label="Deskripsi tujuan"
                             aria-describedby="basic-icon-default-message2" value="{{ old('item_code') }}"></textarea>
                     </div>
