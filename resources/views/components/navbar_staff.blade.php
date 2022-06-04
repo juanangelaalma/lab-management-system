@@ -1,4 +1,4 @@
-<nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+<nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-dark"
     id="layout-navbar">
     <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
         <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
@@ -10,9 +10,7 @@
         <!-- Search -->
         <div class="navbar-nav align-items-center">
             <div class="nav-item d-flex align-items-center">
-                <i class="bx bx-search fs-4 lh-0"></i>
-                <input type="text" class="form-control border-0 shadow-none" placeholder="Search..."
-                    aria-label="Search..." />
+                <span class="badge me-1 bg-primary px-3 py-2 flex"> <i class='bx bxs-user-pin mr-2'></i> Staff</span>
             </div>
         </div>
         <!-- /Search -->
@@ -24,7 +22,7 @@
                         <img src="/assets/img/avatars/profile.png" alt class="w-px-40 h-auto rounded-circle" />
                     </div>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-end">
+                <ul class="dropdown-menu dropdown-menu-end bg-dark">
                     <li>
                         <a class="dropdown-item" href="#">
                             <div class="d-flex">
@@ -40,11 +38,6 @@
                                 </div>
                             </div>
                         </a>
-                    </li>
-                    <li>
-                        <div class="dropdown-divider"></div>
-                    </li>
-                        <div class="dropdown-divider"></div>
                     </li>
                     <li>
                         <form class="cursor-pointer" method="POST" action="{{ route('logout') }}">
