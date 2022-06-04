@@ -38,8 +38,9 @@ class LoanController extends Controller
      */
     public function create(Inventory $inventory)
     {
+        // dd($inventory);
         return view('loans.create', [
-            'inventory' => $inventory->first(),
+            'inventory' => $inventory,
         ]);
     }
 
