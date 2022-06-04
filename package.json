@@ -20,9 +20,5 @@
         "sass": "^1.32.11",
         "sass-loader": "^11.0.1"
     },
-    "dependencies": {
-        "datatables.net": "^1.12.1",
-        "datatables.net-dt": "^1.12.1",
-        "uninstall": "0.0.0"
-    }
+    "dependencies": {}
 }

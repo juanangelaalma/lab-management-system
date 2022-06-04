@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $title . ' | ' . config('app.name', 'Laravel') }}</title>
+    <title>{{ $title . " | ". config('app.name', 'Laravel') }}</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/assets/img/favicon/logo.png" />
@@ -38,10 +38,9 @@
     <!-- Helpers -->
     <script src="/assets/vendor/js/helpers.js"></script>
 
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="/assets/js/config.js"></script>
-
-    {{-- Data Table --}}
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
 </head>
 
 <body>
@@ -88,16 +87,6 @@
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
-    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js">
-    </script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js">
-    </script>
-    <script>
-        $(document).ready(function() {
-            $('#data-table').DataTable();
-        });
-    </script>
     @yield('scripts')
 </body>
 

@@ -12,8 +12,8 @@
           <div class="card-header">
             <a href="{{ route('staff.info.create') }}" class="btn btn-primary btn-lg text-white"> <i class="bx bx-plus"></i> Tambah Event</a>
           </div>
-          <div class="table-responsive text-nowrap px-3">
-            <table class="table" id="data-table" style="width:100%">
+          <div class="table-responsive text-nowrap">
+            <table class="table">
               <thead>
                 <tr>
                   <th>No</th>
@@ -21,7 +21,6 @@
                   <th>Event</th>
                   <th>PJ</th>
                   <th>Tanggal</th>
-                  <th>Action</th>
                 </tr>
               </thead>
               <tbody class="table-border-bottom-0">
