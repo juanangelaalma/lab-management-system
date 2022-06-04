@@ -1,20 +1,24 @@
-@extends('layouts.app', ['active' => 'categories', 'title' => 'Tambah Kategori'])
+@extends('layouts.app_staff', ['active' => 'categories', 'title' => 'Tambah Kategori'])
+
+@section('styles')
+  <link rel="stylesheet" href="/css/staff.css">
+@endsection
 
 @section('content')
     <!-- Content -->
 
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4">Tambah Kategori</h4>
+        <h4 class="fw-bold py-3 mb-4 text-white">Tambah Kategori</h4>
         
         <!-- Basic Bootstrap Table -->
-        <div class="card pb-2">
+        <div class="card pb-2 bg-dark shadow">
           <div class="card-body">
             <form action="{{ route('staff.categories.create') }}" method="POST">
                 @csrf
                 <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label" for="name">Nama Kategori</label>
+                    <label class="col-sm-2 col-form-label text-white" for="name">Nama Kategori</label>
                     <div class="col-sm-10">
-                        <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="name"
+                        <input type="text" name="name" value="{{ old('name') }}" class="form-control bg-dark text-white" id="name"
                             placeholder="PC" />
                         @error('name')
                             <span class="text-danger" role="alert">

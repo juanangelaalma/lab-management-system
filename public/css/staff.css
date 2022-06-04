@@ -1,0 +1,56 @@
+.dropdown-menu.bg-dark .dropdown-item {
+  transition: 500ms;
+}
+.dropdown-menu.bg-dark .dropdown-item:hover {
+  color: #FFFFFF;
+}
+
+.layout-menu.bg-dark .menu-item .menu-link {
+  color: #6C757D;
+  border-radius: 10px;
+  transition: 500ms;
+}
+.layout-menu.bg-dark .menu-item .menu-link:hover {
+  color: #FFFFFF;
+}
+
+.layout-menu.bg-dark .menu-sub .menu-item a.menu-link {
+  color: #6C757D;
+}
+
+.layout-menu.bg-dark .menu-item.active a {
+  color: #FFFFFF;
+}
+
+.layout-menu.bg-dark .menu-sub .menu-item.active a {
+  color: #FFFFFF;
+}
+
+.table-responsive .dataTables_length label {
+  color: #FFFFFF;
+}
+
+.table-responsive .dataTables_length select {
+  background: #233446;
+  color: #FFFFFF;
+  margin: 0 0.5rem;
+}
+.table > :not(caption) > * > * {
+  border: 0 0 1px 0 solid #F8F9FA;
+  /* border-color: #F8F9FA; */
+}
+.dataTables_filter label {
+  color: #FFFFFF;
+}
+
+.dataTables_filter input {
+  background: #233446;
+}
+
+.dataTables_filter input:focus{
+  background: #233446;
+}
+
+ul.pagination li.next a.page-link, ul.pagination li.previous a.page-link {
+  background: #233446;
+}
