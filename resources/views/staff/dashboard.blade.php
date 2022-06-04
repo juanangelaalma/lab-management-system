@@ -119,10 +119,10 @@
                                         <div
                                             class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                             <div class="me-2">
-                                                <h6 class="mb-0 text-white">{{ $loan->item_code }}</h6>
+                                                <h6 class="mb-0 text-white">{!! $loan->inventory_id ? $loan->inventory->item_code : '<span class="badge me-1 bg-danger">DELETED</span>' !!}</h6>
                                             </div>
                                             <div class="user-progress d-flex align-items-center gap-1">
-                                                <span class="text-muted text-white">{{ $loan->name }}</span>
+                                                <span class="text-muted text-white">{{ $loan->guest->name }}</span>
                                             </div>
                                         </div>
                                     </li>

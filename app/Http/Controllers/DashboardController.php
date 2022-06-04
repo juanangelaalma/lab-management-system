@@ -50,6 +50,7 @@ class DashboardController extends Controller
     }
 
     public function staff() {
+        // dd(Loan::latest()->limit(5)->get());
         return view('staff.dashboard', [
             'months'          => $this->getCountAllMonthStaff(),
             'guestbooks'      => Guestbook::whereDate("start", date("Y-m-d"))->get(),
