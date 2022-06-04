@@ -9,8 +9,8 @@
         <!-- Basic Bootstrap Table -->
         <div class="card pb-2">
           <x-alert></x-alert>
-          <div class="table-responsive text-nowrap">
-            <table class="table">
+          <div class="table-responsive text-nowrap p-3">
+            <table class="table" id="data-table" style="width:100%">
               <thead>
                 <tr>
                   <th>No</th>
