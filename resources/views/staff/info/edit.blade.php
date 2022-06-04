@@ -1,13 +1,17 @@
-@extends('layouts.app', ['active' => 'info', 'title' => 'Edit Info'])
+@extends('layouts.app_staff', ['active' => 'info', 'title' => 'Edit Info'])
+
+@section('styles')
+  <link rel="stylesheet" href="/css/staff.css">
+@endsection
 
 @section('content')
     <!-- Content -->
 
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4">Edit Info Lab</h4>
+        <h4 class="fw-bold py-3 mb-4 text-white">Edit Info Lab</h4>
 
         <!-- Basic Bootstrap Table -->
-        <div class="card pb-2">
+        <div class="card pb-2 bg-dark shadow">
             <div class="card-body">
                 <form action="{{ route('staff.info.update', $event) }}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -31,9 +35,9 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label" for="name">Judul Event</label>
+                        <label class="col-sm-2 col-form-label text-white" for="name">Judul Event</label>
                         <div class="col-sm-10">
-                            <input type="text" name="name" value="{{ $event->name }}" class="form-control" id="name"
+                            <input type="text" name="name" value="{{ $event->name }}" class="form-control bg-dark text-white" id="name"
                                 placeholder="Pelaksanaan Ujian Nasional Berjalan Lancar" />
                             @error('name')
                                 <span class="text-danger" role="alert">
@@ -43,9 +47,9 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label" for="responsible">Penanggung Jawab</label>
+                        <label class="col-sm-2 col-form-label text-white" for="responsible">Penanggung Jawab</label>
                         <div class="col-sm-10">
-                            <input type="text" name="responsible" value="{{ $event->responsible }}" class="form-control"
+                            <input type="text" name="responsible" value="{{ $event->responsible }}" class="form-control bg-dark text-white"
                                 id="responsible" placeholder="Albert" />
                             @error('responsible')
                                 <span class="text-danger" role="alert">
@@ -55,9 +59,9 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="html5-datetime-local-input" class="col-md-2 col-form-label">Mulai</label>
+                        <label for="html5-datetime-local-input" class="col-md-2 col-form-label text-white">Mulai</label>
                         <div class="col-md-10">
-                            <input class="form-control" value="{{ date("Y-m-d\TH:i:s", strtotime($event->start)) }}" name="start" type="datetime-local"
+                            <input class="form-control bg-dark text-white" value="{{ date("Y-m-d\TH:i:s", strtotime($event->start)) }}" name="start" type="datetime-local"
                                 id="html5-datetime-local-input" />
                             @error('start')
                                 <span class="text-danger" role="alert">
@@ -67,9 +71,9 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="html5-datetime-local-input" class="col-md-2 col-form-label">Selesai</label>
+                        <label for="html5-datetime-local-input" class="col-md-2 col-form-label text-white">Selesai</label>
                         <div class="col-md-10">
-                            <input class="form-control" value="{{ date("Y-m-d\TH:i:s", strtotime($event->end)) }}" name="end" type="datetime-local"
+                            <input class="form-control bg-dark text-white" value="{{ date("Y-m-d\TH:i:s", strtotime($event->end)) }}" name="end" type="datetime-local"
                                 id="html5-datetime-local-input" />
                             @error('end')
                                 <span class="text-danger" role="alert">
@@ -79,14 +83,16 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="html5-datetime-local-input" class="col-md-2 col-form-label">Deskripsi</label>
+                        <label for="html5-datetime-local-input" class="col-md-2 col-form-label text-white">Deskripsi</label>
                         <div class="col-md-10">
-                            <textarea id="summernote" name="description">{!! $event->description !!}</textarea>
-                            @error('description')
-                                <span class="text-danger" role="alert">
-                                    <p class="m-0 mt-2">{{ $message }}</p>
-                                </span>
-                            @enderror
+                            <div class="p-0 bg-white rounded">
+                                <textarea id="summernote" name="description">{!! $event->description !!}</textarea>
+                                @error('description')
+                                    <span class="text-danger" role="alert">
+                                        <p class="m-0 mt-2">{{ $message }}</p>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
                     </div>
 

@@ -1,34 +1,38 @@
-@extends('layouts.app', ['active' => 'guestbook', 'title' => 'Kunjungan'])
+@extends('layouts.app_staff', ['active' => 'guestbook', 'title' => 'Kunjungan'])
+
+@section('styles')
+  <link rel="stylesheet" href="/css/staff.css">
+@endsection
 
 @section('content')
     <!-- Content -->
 
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4">Tabel Kunjungan</h4>
+        <h4 class="fw-bold py-3 mb-4 text-white">Tabel Kunjungan</h4>
         
         <!-- Basic Bootstrap Table -->
-        <div class="card pb-2">
+        <div class="card pb-2 bg-dark shadow">
           <x-alert></x-alert>
           <div class="table-responsive text-nowrap p-3">
             <table class="table" id="data-table" style="width:100%">
               <thead>
                 <tr>
-                  <th>No</th>
-                  <th>Tanggal</th>
-                  <th>Nama User</th>
-                  <th>Tujuan</th>
+                  <th class="text-primary">No</th>
+                  <th class="text-primary">Tanggal</th>
+                  <th class="text-primary">Nama User</th>
+                  <th class="text-primary">Tujuan</th>
                 </tr>
               </thead>
               <tbody class="table-border-bottom-0">
                 @php $no=1 @endphp
                 @foreach ($guestbook as $item)
                 <tr>
-                  <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $no }}</strong></td>
-                  <td>
+                  <td class="text-white py-3"><strong>{{ $no }}</strong></td>
+                  <td class="py-3">
                     <span class="badge me-1 bg-label-primary">{{ timestamp_to_indo_date($item->start) }}</span>
                   </td>
-                  <td>{{ $item->guest->name }}</td>
-                  <td>{{ $item->purpose }}</td>
+                  <td class="text-white py-3">{{ $item->guest->name }}</td>
+                  <td class="text-white py-3">{{ $item->purpose }}</td>
                 </tr>
                 @php $no++ @endphp                    
                 @endforeach

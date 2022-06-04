@@ -54,7 +54,7 @@
             <!-- / Menu -->
 
             <!-- Layout container -->
-            <div class="layout-page overflow-auto">
+            <div class="layout-page overflow-auto bg-dark">
                 <!-- Navbar -->
                 <x-navbar></x-navbar>
                 <!-- / Navbar -->
