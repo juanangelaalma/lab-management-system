@@ -12,8 +12,8 @@
           <div class="card-header">
             <a href="{{ route('staff.inventories.create') }}" class="btn btn-primary btn-lg text-white"> <i class="bx bx-plus"></i> Tambah Inventori</a>
           </div>
-          <div class="table-responsive text-nowrap">
-            <table class="table">
+          <div class="table-responsive text-nowrap px-3">
+            <table class="table" id="data-table" style="width:100%">
               <thead>
                 <tr>
                   <th>ID</th>

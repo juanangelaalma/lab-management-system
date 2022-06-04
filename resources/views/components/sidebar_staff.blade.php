@@ -1,4 +1,4 @@
-<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme position-relative">
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme position-relative staff">
   <div class="app-brand demo">
     <a href="{{ route('staff.dashboard') }}" class="app-brand-link">
         <img src="/assets/img/favicon/fixLogo.png" class="w-25" alt="">
