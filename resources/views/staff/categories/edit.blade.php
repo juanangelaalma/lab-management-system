@@ -1,21 +1,25 @@
-@extends('layouts.app', ['active' => 'categories', 'title' => 'Edit Kategori'])
+@extends('layouts.app_staff', ['active' => 'categories', 'title' => 'Edit Kategori'])
+
+@section('styles')
+  <link rel="stylesheet" href="/css/staff.css">
+@endsection
 
 @section('content')
     <!-- Content -->
 
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4">Edit Kategori</h4>
+        <h4 class="fw-bold py-3 mb-4 text-white">Edit Kategori</h4>
         
         <!-- Basic Bootstrap Table -->
-        <div class="card pb-2">
+        <div class="card pb-2 bg-dark shadow">
           <div class="card-body">
             <form action="{{ route('staff.categories.edit', $category) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label" for="name">Name kategori</label>
+                    <label class="col-sm-2 col-form-label text-white" for="name">Name kategori</label>
                     <div class="col-sm-10">
-                        <input type="text" name="name" class="form-control" id="name"
+                        <input type="text" name="name" class="form-control bg-dark text-white" id="name"
                             placeholder="PC-1" value="{{ $category->name }}" />
                         @error('name')
                             <span class="text-danger" role="alert">
