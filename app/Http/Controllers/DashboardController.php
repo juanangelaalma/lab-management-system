@@ -13,7 +13,7 @@ class DashboardController extends Controller
     private function valueToArray($data) {
         $month = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         foreach($data as $res) {
-            $month[$res->month] = $res->total;
+            $month[$res->month - 1] = $res->total;
         }
         return $month;
     }
