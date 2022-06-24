@@ -26,4 +26,5 @@ Route::controller(AuthController::class)->group( function(){
 
 Route::controller(GuestbookController::class)->prefix('guestbook')->group(function() {
     Route::get('history', 'history')->middleware('auth:sanctum');
+    Route::post('create', 'create')->middleware('auth:sanctum');
 });
