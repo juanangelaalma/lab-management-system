@@ -3,7 +3,7 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\GuestbookController;
 use App\Http\Controllers\Api\InventoryController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\LoanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,4 +32,9 @@ Route::controller(GuestbookController::class)->prefix('guestbooks')->group(funct
 
 Route::controller(InventoryController::class)->prefix('inventories')->group(function() {
     Route::get('/', 'index')->middleware('auth:sanctum');
+});
+
+Route::controller(LoanController::class)->prefix('loans')->group(function() {
+    Route::get('history', 'history')->middleware('auth:sanctum');
+    Route::get('create', 'create')->middleware('auth:sanctum');
 });
