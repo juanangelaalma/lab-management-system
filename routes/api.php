@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\GuestbookController;
+use App\Http\Controllers\Api\InventoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +25,11 @@ Route::controller(AuthController::class)->group( function(){
     Route::post('refresh', 'refresh');
 });
 
-Route::controller(GuestbookController::class)->prefix('guestbook')->group(function() {
+Route::controller(GuestbookController::class)->prefix('guestbooks')->group(function() {
     Route::get('history', 'history')->middleware('auth:sanctum');
     Route::post('create', 'create')->middleware('auth:sanctum');
+});
+
+Route::controller(InventoryController::class)->prefix('inventories')->group(function() {
+    Route::get('/', 'index')->middleware('auth:sanctum');
 });
