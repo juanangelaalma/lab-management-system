@@ -1,6 +1,9 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\GuestbookController;
+use App\Http\Controllers\Api\InventoryController;
+use App\Http\Controllers\Api\LoanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +17,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::controller(AuthController::class)->group( function(){
+    Route::get('me', 'me');
+    Route::post('login', 'login');
+    Route::post('register', 'register');
+    Route::post('logout', 'logout');
+    Route::post('refresh', 'refresh');
+});
+
+Route::controller(GuestbookController::class)->prefix('guestbooks')->group(function() {
+    Route::get('history', 'history')->middleware('auth:sanctum');
+    Route::post('create', 'create')->middleware('auth:sanctum');
+});
+
+Route::controller(InventoryController::class)->prefix('inventories')->group(function() {
+    Route::get('/', 'index')->middleware('auth:sanctum');
+});
+
+Route::controller(LoanController::class)->prefix('loans')->group(function() {
+    Route::get('history', 'history')->middleware('auth:sanctum');
+    Route::get('create', 'create')->middleware('auth:sanctum');
 });
